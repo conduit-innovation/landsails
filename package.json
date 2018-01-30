@@ -1,0 +1,29 @@
+{
+  "name": "landsails",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "bower-resolve-webpack-plugin": "^1.0.4",
+    "browserfs": "^1.4.3",
+    "machine-static": "git+https://github.com/conduit-innovation/machine-static.git",
+    "machinepack-static-fs": "git+https://github.com/conduit-innovation/machinepack-static-fs.git",
+    "offline-js": "^0.7.19",
+    "sails-disk": "^1.0.0-12",
+    "waterline": "^0.13.1-9"
+  }
+}
