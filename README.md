@@ -1,10 +1,21 @@
 # LandSails
 
-Brings plain SailsJS 1.x routes, models and actions into the client-side, and provides automatic model synchronisation.
+Brings plain SailsJS 1.x routes, models and actions into the client-side, and provides automatic model synchronisation. Provides isomorphic models, routes and actions, that persist and synchronise.
 
 **30th Jan 2018** - This is a proof of concept. There are currently no tests. If this approach gains traction, I will put together a proper roadmap and release.
 
 **Due to the lack of docs, I'm happy to help explain and get this PoC set up for you. Just give me a shout; I'm available on GitHub @talss89 or by email: tom.lawton@cndu.it**
+
+## Rough Outline
+
+- Provides an 'Island' object, which contain Sails routes, actions and models for use client-side.
+- Client side 'Island' models are backed by `balderdashy/sails-disk` and `jvilk/BrowserFS`, so they persist.
+- The ODA module tracks changes to Waterline models on the server, and sends 'ODA' packets to the client.
+- [TODO] Client reads ODA packets and applies transformations to the local 'Island'
+- [TODO] Uses the CloudSDK from `mikermcneil/parasails` to auto-generate AJAX SDK for the client
+- [TODO] Uses OfflineJS to detect loss of connectivity. In this situation, AJAX requests to the server are queued, and also simultaneously run on the 'Island'.
+- [TODO] Once connectivity resumes, the queued requests are sent, and any ODA packets are applied to the Island
+- Now we're back in sync.
 
 ## Wait, what ... why?
 
@@ -25,6 +36,8 @@ Once connectivity is regained, all queued requests are then dispatched to the se
 ## Code Examples
 
 I have my test Sails project set up to load `landSails` as a global. It's not essential, but the following examples work on that basis.
+
+Currently, this only covers the server-side ODA module. The 'Island' also works to some degree (loads models fine), but doesn't yet support routes or actions, so I've left out example code for the time being.
 
 ### Automatically track changes to waterline model(s), and send ODA back to the client
 
